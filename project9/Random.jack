@@ -1,0 +1,86 @@
+class Random {
+    static Array bag, nextBag; // Two bags for implementing bag-based randomization
+    static int index;          // Current position in the bag
+    static int currentValue;  // Seed value used for random number generation
+   
+    
+    /** Initializes the random number generator system */
+    function void setSeed(int seed) {
+        var int i;
+        let currentValue = seed;
+        
+        // Create our bags - each holds 4 numbers
+        let bag = Array.new(4); // Current bag being used
+        let nextBag = Array.new(4); // Next bag being prepared
+        
+        // Initialize nextBag with sequential numbers 1-4
+        let i = 0;
+        while (i < 4) {
+            let nextBag[i] = i + 1;  // Fill with 1,2,3,4
+            let i = i + 1;
+        }
+        
+        // Prepare both bags
+        do Random.loadBag();
+        do Random.loadBag();
+        let index = 0;
+        return;
+    }
+
+    /** Get next random value */
+    function int getValue() {
+        let currentValue = (currentValue * 253) + 1;
+        let currentValue = currentValue & 16383;
+        return currentValue;
+    }
+
+    /** Shuffle using Knuth shuffle */
+    function void shuffleBag(Array arr) {
+        var int i, j, temp;
+        let i = 0;
+        while (i < 3) {  // Loop to n-1 for n elements
+            let temp = Random.getValue();
+            let j = i + (temp - ((temp / (4 - i)) * (4 - i)));  // Get range i to 3
+            
+            // Swap elements at positions i and j
+            let temp = arr[i];
+            let arr[i] = arr[j];
+            let arr[j] = temp;
+            
+            let i = i + 1;
+        }
+        return;
+    }
+
+    /** Transfers numbers from nextBag to current bag */
+    function void loadBag() {
+        var int i;
+        // Copy all numbers from nextBag to current bag
+        let i = 0;
+        while (i < 4) {
+            let bag[i] = nextBag[i];
+            let i = i + 1;
+        }
+        // Shuffle nextBag for next cycle
+        do Random.shuffleBag(nextBag);
+        return;
+    }
+
+    /**
+    * Returns next shape number from the bag
+    * When bag is empty, loads numbers from nextBag
+    * @return A number between 1 and 4
+    */
+    function int nextShape() {
+        var int shape;
+        let shape = bag[index]; // Get current number
+        let index = index + 1; // Move to next position
+
+        // If we've used all numbers in the bag
+        if (index = 4) {
+            let index = 0; // Reset to start
+            do Random.loadBag(); // Refill from nextBag
+        }
+        return shape;
+    }
+}

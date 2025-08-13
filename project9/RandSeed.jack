@@ -1,0 +1,42 @@
+class RandSeed {
+    function int getSeed() {
+        var int seed;
+        var int key;
+
+        // Initialize variables
+        let seed = 0;
+        let key = 0;
+
+        // Display game title and instructions
+        do Output.moveCursor(4,23);
+        do Output.printString("Game Instructions:");
+        
+
+        do Output.moveCursor(7, 23);
+        do Output.printString("press 1 for circle");
+        do Output.moveCursor(9, 23);
+        do Output.printString("press 2 for triangle");
+        do Output.moveCursor(11, 23);
+        do Output.printString("press 3 for squre");
+        do Output.moveCursor(13, 23);
+        do Output.printString("press 4 for arrow");
+
+        // Display start instruction
+        do Output.moveCursor(20,23);
+        do Output.printString("press a key to start");
+        do Output.println();
+
+        // Wait for key press while accumulating seed value
+        while(~key) {
+            let seed = seed + 1; // Increment seed
+            if( seed = 32767 ) { // If reached max value
+                let seed = 0; // Reset to 0
+            }
+            let key = Keyboard.keyPressed();
+        }
+        
+        // Clear instructions and return generated seed
+        do Screen.clearScreen();
+        return seed;
+    }
+}

@@ -1,0 +1,17 @@
+class Main { 
+
+function void main() {
+
+        var SimonGame game; 
+        let game = SimonGame.new(); 
+
+        // starting the game
+        do game.run(); 
+        do game.dispose();
+        
+        return;
+
+}
+
+
+}

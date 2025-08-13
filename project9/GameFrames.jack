@@ -1,0 +1,131 @@
+class GameFrames{
+
+        field boolean color;
+
+/** Constructs a new GameFrames instance */
+constructor GameFrames new() {
+        let color = true; 
+        return this; 
+} 
+
+ /** Disposes this GameFrames instance from memory */
+method void dispose() { 
+        do Memory.deAlloc(this); 
+        return;
+}
+
+/** Draws a frame around the circle shape */
+method void frameCircle() {
+
+        do Screen.setColor(true);
+
+        do Screen.drawRectangle(10, 85, 15, 145); // Left side
+        do Screen.drawRectangle(115,85 , 120, 145); // Right side
+        do Screen.drawRectangle(10, 85, 120, 88); // Top side
+        do Screen.drawRectangle(10, 145, 120, 148); // Bottom side
+
+        return;
+}
+
+/** Draws a frame around the triangle shape */
+method void frameTriangle() {
+
+        do Screen.setColor(true);
+
+        do Screen.drawRectangle(140, 85, 145, 145); // Left side
+        do Screen.drawRectangle(245,85 , 250, 145); // Right side
+        do Screen.drawRectangle(140, 85, 250, 88); // Top side
+        do Screen.drawRectangle(140, 145, 250, 148); // Bottom side
+
+        return;
+
+}
+
+/** Draws a frame around the square shape */
+method void frameSquare() {
+
+        do Screen.setColor(true);
+
+        do Screen.drawRectangle(270, 85, 275, 145); // Left side
+        do Screen.drawRectangle(365,85 , 370, 145); // Right side
+        do Screen.drawRectangle(270, 85, 370, 88); // Top side
+        do Screen.drawRectangle(270, 145, 370, 148); // Bottom side
+
+        return;
+
+}
+
+/** Draws a frame around the arrow shape */
+method void frameArrow() {
+
+        do Screen.setColor(true);
+
+        do Screen.drawRectangle(400, 85, 405, 145); // Left side
+        do Screen.drawRectangle(490,85 , 495, 145); // Right side
+        do Screen.drawRectangle(400, 85, 495, 88); // Top side
+        do Screen.drawRectangle(400, 145, 495, 148); // Bottom side
+
+        return;
+
+}
+
+
+// Methods for clearing frames
+
+/** Clears the frame around the circle */
+method void clearFrameCircle() {
+
+        do Screen.setColor(false);
+
+        do Screen.drawRectangle(10, 85, 15, 145);
+        do Screen.drawRectangle(115,85 , 120, 145);
+        do Screen.drawRectangle(10, 85, 120, 88);
+        do Screen.drawRectangle(10, 145, 120, 148);
+
+        return;
+}
+
+/** Clears the frame around the triangle */
+method void clearFrameTriangle() {
+
+        do Screen.setColor(false);
+
+        do Screen.drawRectangle(140, 85, 145, 145);
+        do Screen.drawRectangle(245,85 , 250, 145);
+        do Screen.drawRectangle(140, 85, 250, 88);
+        do Screen.drawRectangle(140, 145, 250, 148);
+
+        return;
+
+}
+
+/** Clears the frame around the square */
+method void clearFrameSquare() {
+
+        do Screen.setColor(false);
+
+        do Screen.drawRectangle(270, 85, 275, 145);
+        do Screen.drawRectangle(365,85 , 370, 145);
+        do Screen.drawRectangle(270, 85, 370, 88);
+        do Screen.drawRectangle(270, 145, 370, 148);
+
+        return;
+
+}
+
+/** Clears the frame around the arrow */
+method void clearFrameArrow() {
+
+        do Screen.setColor(false);
+
+        do Screen.drawRectangle(400, 85, 405, 145);
+        do Screen.drawRectangle(490,85 , 495, 145);
+        do Screen.drawRectangle(400, 85, 495, 88);
+        do Screen.drawRectangle(400, 145, 495, 148);
+
+        return;
+
+}
+
+
+}
